@@ -4,6 +4,16 @@ using namespace std;
 
 #define MAX 10000
 
+int str_cmp(const char* str1, const char* str2) {
+	int length = strlen(str1) == strlen(str2) ? strlen(str1) : -1;
+	if (length == -1)
+		return 0;
+	for (int i=0; i< length; ++i)
+		if(str1[i] != str2[i])
+			return 0;
+	return 1;
+}
+
 bool response(){
 	cout<<"是否继续？(Y/N)"<<endl;
 	char response;
@@ -45,7 +55,7 @@ void searchAndDisplayContracts(Contract contracts[], int length) {
 		cin.ignore(20, '\n');
 		cout<<"找到了如下联系人："<<endl<<endl;
 		for(int i=0; i<length; ++i) {
-			if (0 == strcmp(name, contracts[i].name)) {
+			if (str_cmp(name, contracts[i].name)) {
 				displayContract(contracts[i]);	
 			}
 		}
