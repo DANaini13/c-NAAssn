@@ -13,6 +13,7 @@ int str_cmp(const char* str1, const char* str2) {
 			return 0;
 	return 1;
 }
+//test 
 
 bool response(){
 	cout<<"是否继续？(Y/N)"<<endl;
