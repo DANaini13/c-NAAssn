@@ -1,162 +1,170 @@
 #include<iostream>
 #include<fstream>
 #include<cstring>
+#include<cmath>
 using namespace std;
  
-struct Cun{
+struct Person{
 	char name[20];
 	char number[20];
 	char address[100];
 };
-//ÎÄ×ÖÌáÊ¾ ÊÇ·ñ¼ÌĞø 
+
 bool response(){
-cout<<"ÊÇ·ñ¼ÌĞø£¿(Y/N)"<<endl;
-char response;
-cin>>response;
-if (response == 'Y' || response == 'y')
-return true;
-return false;
+	cout<<"ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Y/N)"<<endl;
+	char response;
+	cin>>response;
+	if (response == 'Y' || response == 'y')
+		return true;
+	return false;
 }
-//Êä³öÍ¨Ñ¶Â¼µÄĞÅÏ¢ 
-void displayContract(Cun Alldate){
-cout<<"name:"<< Alldate.name<<endl;
-cout<<"number:"<< Alldate.number<<endl;
-cout<<"address:"<< Alldate.address<<endl;
+
+void displayContract(Person allData){
+	cout<<"name:"<< allData.name<<endl;
+	cout<<"number:"<< allData.number<<endl;
+	cout<<"address:"<< allData.address<<endl;
 }
-//²éÕÒÁªÏµÈË 
-void search(Cun Alldate[],int Chang) {
+
+void search(Person allData[],int length) {
 	do {
-	cout<<"ÊäÈëÁªÏµÈËĞÕÃû£º";
-	char name[20];
-	cin.ignore(20, '\n');
-	cin.get(name, 20, '\n');
-	cin.ignore(20, '\n');
-	cout<<"²éÕÒµ½ÒÔÏÂÁªÏµÈË£º"<<endl<<endl;
-	for(int i=0; i<Chang; ++i) {				 
-	if (0 == strcmp(name,Alldate[i].name)) {			//¶Ô±ÈÃ¿Ò»¸öÈËµÄĞÕÃû 
-	displayContract(Alldate[i]);
-	}
-	}
-}while(response());
+		cout<<"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+		char name[20];
+		cin.ignore(20, '\n');
+		cin.get(name, 20, '\n');
+		cin.ignore(20, '\n');
+		cout<<"ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½Ë£ï¿½"<<endl<<endl;
+		for(int i=0; i<length; ++i) {				 
+			if (0 == strcmp(name,allData[i].name)) {
+				displayContract(allData[i]);
+			}
+		}
+	}while(response());
 }
-//²é¿´ËùÓĞµÄÁªÏµÈËĞÅÏ¢ 
-void LookA(Cun Alldate[],int Chang){
-	for(int i=0;i<Chang-1;++i){					//¶ÔËùÓĞÁªÏµÈË½øĞĞ°´×ÖÄ¸µÄÅÅĞò 
-		for(int j=0;j<Chang-1;++j){
-			if(Alldate[j].name>Alldate[j+1].name){
-				strcpy(Alldate[i].name,Alldate[i+1].name);
+
+void LooloadDataA(Person allData[],int length){
+	for(int i=0;i<length-1;++i){		
+		for(int j=0;j<length-1;++j){
+			if(allData[j].name>allData[j+1].name){
+				strcpy(allData[i].name,allData[i+1].name);
 			}
 		}
 	}
 	int i;
-	cout<<"ÎÒµÄµç»°±¾£º\n"<<endl;
-	for(i=0; i<Chang - 1; ++i) {				//Êä³öËùÓĞÁªÏµÈËĞÅÏ¢ 
-	displayContract(Alldate[i]);
+	cout<<"ï¿½ÒµÄµç»°ï¿½ï¿½ï¿½ï¿½\n"<<endl;
+	for(i=0; i<length - 1; ++i) {		
+	displayContract(allData[i]);
 	cout<<"================================================="<<endl;
 	}
 	cout<<endl;
 }
-//Ìí¼ÓÁªÏµÈË 
-void add_date(int &Chang,Cun Alldate[]){ 
-	if(Chang<10000){
+
+void add_date(int &length,Person allData[]){ 
+	if(length<10000){
 		char name[20];
 		char number[20];
 		char address[100];
-		cout<<"ÇëÊäÈëĞÕÃû:";
+		cout<<"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:";
+		cin.ignore(20,'\n');
 		cin.get(name,20,'\n');
 		cin.ignore(20,'\n');
-		cout<<"ÇëÊäÈëºÅÂë£º";
+		cout<<"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£º";
 		cin.get(number,20,'\n');
 		cin.ignore(20,'\n');
-		cout<<"ÇëÊäÈëµØÖ·£º";
+		cout<<"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½";
 		cin.get(address,100,'\n');
 		cin.ignore(20,'\n'); 
-		strcpy(Alldate[Chang].name,name);				//¸´ÖÆÁªÏµÈËĞÅÏ¢µ½Êı×éÄÚ 
-		strcpy(Alldate[Chang].number,number);
-		strcpy(Alldate[Chang].address,address);
-		Chang=Chang+1;
+		cout<<"length: "<<length<<endl;
+		cout<<"name: "<< allData[length].name;
+		strcpy(allData[length].name,name);
+		cout<<"tag"<<endl;
+		strcpy(allData[length].number,number);
+		strcpy(allData[length].address,address);
+		length=length+1;
 	}
 }
-//½«ÁªÏµÈËĞÅÏ¢´ÓÎÄ±¾ÖĞÊäÈëµ½Êı×éÄÚ 
-void K(Cun Alldate[],int &Chang){
-	ifstream TXL("tongxunlu!.txt");
+
+void loadData(Person allData[],int &length){
+	ifstream dataFile("tongxunlu!.txt");
 	char a;
-	int SC[5];
-	int z;
-//½«Êµ¼Ê³¤¶È´ÓÎÄ±¾ÖĞÌá³öµ½ChangÖĞ 
-	for(z=0;z<5;++z){			//Êı×éÄÚËùÓĞÊı×ÖÏÈ¸³Öµ0£» 
-		SC[z]=0;
+	int lengthInts[100];
+	for (int i=0; i<100; ++i)
+		lengthInts[i] = -1;
+	dataFile.get(a);
+	for (int i=0; i<100 && a != '|'; ++i) {
+		lengthInts[i] = a - '0';
+		dataFile.get(a);
 	}
-	TXL.get(a);
-	for(z=5;z>0;--z){ 			//½«char¸ÄÎªint 
-	if(! (a=='|')){
-		SC[z]=a -'0';
-		TXL.get(a);
+	length = 0;
+	int count = 0;
+	for(int i=99; i>=0; --i) {
+		if(lengthInts[i] != -1){
+			length += pow(10, count) * lengthInts[i];
+			++count;
+		}
 	}
-}
-	Chang=SC[1]+SC[2]*10+SC[3]*100+SC[4]*1000+SC[5]*10000;			//¸³Öµµ½ChangÖĞ 
-	
-	int i= 0;
-	char b[10000];
-	while(!TXL.eof()){			//ÏÈ½«ÎÄ±¾ËùÓĞÁªÏµÈËĞÅÏ¢´æµ½Ò»¸öÁÙÊ±Êı×éÖĞ£» 
-	TXL.get(a);
-	b[i]=a;
-	++i;
+
+	char buffer[200];
+	dataFile.getline(buffer, 100);
+	int index = 0;
+	while(index < length) {
+		dataFile.getline(buffer, 100);
+		int i;
+		for(i=0; buffer[i] != '|'; ++i) {
+			allData[index].name[i] = buffer[i];
+			allData[index].name[i + 1] = '\0';
+		}
+		++i;
+		for(int j = 0; buffer[i] != '|'; ++i, ++j) {
+			allData[index].number[j] = buffer[i];
+			allData[index].number[j + 1] = '\0';
+		}
+		++i;
+		for(int j = 0; buffer[i] != '|'; ++i, ++j) {
+			allData[index].address[j] = buffer[i];
+			allData[index].address[j + 1] = '\0';
+		}
+		++index;
 	}
-	i=0;
-	for(int j=0;j<=Chang;++j){					//½«ÁÙÊ±Êı×éµÄĞÅÏ¢·Ö±ğ´æµ½AlldateµÄname£¬number£¬addressÖĞ 
-		char c[100];
-		int d;
-		for(d=0;!(b[i]=='|');++i,++d){
-			c[d]=b[i];
-		}
-		strcpy(Alldate[j].name,c);
-		for(d=0;(b[i]=='|');++i,++d){
-			c[d]=b[i];
-		}
-		strcpy(Alldate[j].number,c);
-		for(d=0;!(b[i]=='|');++i,++d){
-			c[d]=b[i];
-		}
-		strcpy(Alldate[j].address,c);
-}
+
 }
 
 
-void baocun(Cun Alldate[],int Chang){
-	fstream TXL("tongxunlu!.txt");
+void saveToFile(Person allData[],int length){
+	fstream dataFile("tongxunlu!.txt");
+	dataFile<<length<<"|";
 	int i;
-	for(i=0;i<Chang;++i){
-	TXL<<Alldate[i].name<<'|'<<Alldate[i].number<<'|'<<Alldate[i].address<<'|'<<endl;
-}
-	TXL.close();
+	for(i=0;i<length;++i){
+		dataFile<<'\n'<<allData[i].name<<'|'<<allData[i].number<<'|'<<allData[i].address<<'|';
+	}
+	dataFile.close();
 }
 
 int main(){
-	ifstream TXL("tongxunlu!.txt");
-	if(!TXL.is_open()){
+	ifstream dataFile("tongxunlu!.txt");
+	if(!dataFile.is_open()){
 		ofstream("tongxunlu!.txt");
 	}
-	int Chang;
-	Cun Alldate[10000];
-	K(Alldate,Chang);
+	int length;
+	Person allData[10000];
+	loadData(allData,length);
+	cout<<length<<endl;
 	do{
-		cout<<"ÇëÊäÈëÑ¡Ïî£º"<<endl<<"1.²é¿´ËùÓĞÁªÏµÈË"<<endl<<"2.Ìí¼ÓÁªÏµÈË"<<endl<<"3.²éÕÒÁªÏµÈË"<<endl<<"4.ÍË³ö"<<endl;
+		cout<<"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½î£º"<<endl<<"1.ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½"<<endl<<"2.ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½"<<endl<<"3.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½"<<endl<<"4.ï¿½Ë³ï¿½"<<endl;
 		char Choose;
 		cin>>Choose;
-	switch(Choose){
-		case '1':
-		LookA(Alldate,Chang);//²é¿´Í¨Ñ¶Â¼ 
-		break;
-		case '2':
-		add_date(Chang,Alldate);//Ìí¼ÓÁªÏµÈË 
-		break;
-		case '3':
-		search(Alldate, Chang);;//²éÕÒÁªÏµÈË 
-		break;
-		case '4':
-		baocun(Alldate,Chang);//±£´æÁªÏµÈË 
-		break;
+		switch(Choose){
+			case '1':
+				LooloadDataA(allData,length);
+				break;
+			case '2':
+				add_date(length,allData); 
+				break;
+			case '3':
+				search(allData, length);;
+				break;
+			case '4':
+				saveToFile(allData,length);
+				return 0;
 		}
 	}while(true);
-	}
+}
