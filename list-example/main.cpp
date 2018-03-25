@@ -9,5 +9,9 @@ int main(){
     LinkList list;
     list.build();
     list.display();
+    //====================================
+    list.displayAll();
+    //====================================
+    list.display();
     return 0;
 }
