@@ -13,7 +13,7 @@ void oput(float a,float b){
            oput(a[0],a[1]);
             return;
         }
-        a[i]=(rand() %6)+1;
+        a[i] = (rand() %6) + 1;
         ++i;
         rec(times,i,a);
     }
@@ -23,7 +23,7 @@ int main(){
     int a[times];
     srand((unsigned)time(NULL)); 
     for(int i = 0; i < 2; ++i){
-        a[i]=(rand() %6)+1;
+        a[i] = (rand() %6) + 1;
     }
     oput(a[0],a[1]);
 
