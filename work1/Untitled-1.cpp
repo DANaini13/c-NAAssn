@@ -3,8 +3,8 @@
 #include<stdlib.h>
 using namespace std;
 
-void oput(int a,int b){
-    int c = (a+b)/2;
+void oput(float a,float b){
+    float c = (a+b)/2;
     cout<<"The first die comes up:"<<a<<endl<<"The second die comes up:"<<b<<endl<<"Your total roll is:"<<c<<endl;
 }
 
