@@ -26,5 +26,3 @@ private:
     void append(int, Node*);
     
 };
-//deng wo 3 fen zhong...
-//ni xian xie list.cpp wenjian.
