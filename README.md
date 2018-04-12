@@ -114,7 +114,7 @@ strcmp()的返回值：
 ## 二叉树
 
 ### 二叉树长啥样
-
+![Image of Screen Shot](https://github.com/DANaini13/cplusplus-NAAssn/blob/master/Resources/bst.jpg)
 
 ### 二叉树的逻辑规律
 > 1. 左边的节点小于等于右边的节点
