@@ -64,9 +64,8 @@ void LinkList:: removeFirst(Node* &head){
     if(!head){
         return;
     }
-    Node* temp = new Node ;
+    Node* temp;
     temp = head -> next;
     delete head;
-    head = NULL;
     head = temp;
 }
