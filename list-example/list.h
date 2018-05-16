@@ -23,6 +23,8 @@ private:
 
     //====================================================
     void display(Node*);
-    void append(int, Node*);
-    
+    void append(int, Node*&);
+    void removeAll(Node*&);
+    void removeLast(Node*&);
+    void removeFirst(Node*&);
 };

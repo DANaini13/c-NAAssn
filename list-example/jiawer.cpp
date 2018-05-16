@@ -14,15 +14,26 @@ void LinkList:: displayAll() {
     cout<<endl;
 }
 
-void LinkList:: append(int data,Node* head){
+void LinkList:: removeAll() {
+    removeAll(head);
+}
+
+void LinkList:: removeAll(Node* &head){
+    if(!head)
+        return;
+    removeAll(head -> next);
+    delete head;
+    head = NULL;
+}
+
+void LinkList:: append(int data,Node* &head){
     if(!head){
-        head = NULL;
         head = new Node;
         head -> data = data;
+        head -> next = NULL;
         return;
     }
         append(data,head -> next);
-    
 }
 
 void LinkList:: append(int data){
@@ -30,10 +41,32 @@ void LinkList:: append(int data){
 }
 
 void LinkList:: removeLast(){
+    removeLast(head);
+}
+
+void LinkList:: removeLast(Node* &head){
     if(!head){
         return;
     }
     if(!head -> next){
+        delete head;
         head = NULL;
+        return;
     }
+    removeLast(head -> next);
+}
+
+void LinkList:: removeFirst(){
+    removeFirst(head);
+}
+
+void LinkList:: removeFirst(Node* &head){
+    if(!head){
+        return;
+    }
+    Node* temp = new Node ;
+    temp = head -> next;
+    delete head;
+    head = NULL;
+    head = temp;
 }

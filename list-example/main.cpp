@@ -10,8 +10,9 @@ int main(){
     list.build();
     list.display();
     //====================================
-    list.displayAll();
+    list.removeFirst();
     //====================================
     list.display();
+    list.removeAll();
     return 0;
 }
