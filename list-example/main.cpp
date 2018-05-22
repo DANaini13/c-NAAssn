@@ -10,7 +10,7 @@ int main(){
     list.build();
     list.display();
     //====================================
-    list.removeFirst();
+    list.removeTwo();
     //====================================
     list.display();
     list.removeAll();

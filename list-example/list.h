@@ -17,6 +17,7 @@ public:
     void removeLast();
     void removeAll();
     void removeFirst();
+    void removeTwo();
     bool exsit(int data); //loop only
 private:
     Node *head;
@@ -27,4 +28,5 @@ private:
     void removeAll(Node*&);
     void removeLast(Node*&);
     void removeFirst(Node*&);
+    void removeTwo(Node*&);
 };

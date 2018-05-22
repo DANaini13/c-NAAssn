@@ -69,3 +69,19 @@ void LinkList:: removeFirst(Node* &head){
     delete head;
     head = temp;
 }
+
+void LinkList:: removeTwo(){
+    removeTwo(head);
+}
+
+void LinkList:: removeTwo(Node* &head){
+    if(!head)
+    return;
+    if(head -> data == 2){
+        Node* temp;
+        temp = head -> next;
+        delete head;
+        head = temp;
+    }
+    removeTwo(head -> next);
+}
