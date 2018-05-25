@@ -18,6 +18,7 @@ public:
     void removeAll();
     void removeFirst();
     void removeTwo();
+    void removeSpace();
     bool exsit(int data); //loop only
 private:
     Node *head;
@@ -29,4 +30,5 @@ private:
     void removeLast(Node*&);
     void removeFirst(Node*&);
     void removeTwo(Node*&);
+    void removeSpace(Node*&);
 };

@@ -85,3 +85,25 @@ void LinkList:: removeTwo(Node* &head){
     }
     removeTwo(head -> next);
 }
+
+void LinkList:: removeSpace(){
+    removeSpace(head);
+}
+
+void LinkList:: removeSpace(Node* &head){
+    if(!head)
+    return;
+    if(!head -> next)
+    return;
+    Node* temp1;
+    Node* temp2;
+    temp1 = head;
+    temp2 = head -> next;
+    temp2 = temp2 -> next;
+    head = head -> next;
+    head -> next = NULL;
+    delete head;
+    head = temp1;
+    head -> next = temp2;
+    removeSpace(head -> next);
+}
