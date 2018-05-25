@@ -1,7 +1,9 @@
 #include "words.h"
 
+//
+
 int main() {
-    Word one = Word("one");
+    ChineseWord one = ChineseWord("one");
     one.display();
     return 0;
 }

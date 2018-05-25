@@ -13,6 +13,7 @@ private:
 class ChineseWord: public Word {
 public:
     ChineseWord(const char* content);
+    ~ChineseWord();
     void display();
 };
 
