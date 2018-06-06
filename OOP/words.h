@@ -17,4 +17,11 @@ public:
     void display();
 };
 
+class EnglishWord: public Word{
+    public:
+    EnglishWord(const char* content);
+    ~EnglishWord();
+    void display();
+};
+
 #endif

@@ -13,24 +13,39 @@ Word::Word(const char* content) {
 Word::~Word() {
 	delete this -> content;
 	this -> content = NULL;
-	cout<<"2"<<endl;
+	cout<<"6"<<endl;
 }
 
 void Word::display() {
 	cout<<this -> content;
+	cout<<endl;
 	cout<<"3"<<endl;
 }
 
-ChineseWord::ChineseWord(const char* content): Word(content) {
-	cout<<"4"<<endl;
+ChineseWord::ChineseWord(const char* content):Word(content){
+	cout<<"2"<<endl;
 }
 
 ChineseWord::~ChineseWord() {
-	cout<<"5"<<endl;
+	cout<<"7"<<endl;
 }
 
 void ChineseWord::display() {
 	cout<<"Chinese: ";
 	Word::display();
-	cout<<"6"<<endl;
+	cout<<"4"<<endl;
+}
+
+EnglishWord::EnglishWord(const char* content):Word(content){
+	cout<<'2'<<endl;
+}
+
+EnglishWord::~EnglishWord(){
+	cout<<'5'<<endl;
+}
+
+void EnglishWord::display(){
+	cout<<"English:";
+	Word::display();
+	cout<<'4'<<endl;
 }
